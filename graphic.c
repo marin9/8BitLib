@@ -137,7 +137,7 @@ void graphic_drawchar(int x, int y, char c){
 			rect.w=px_size*font_size;
 			rect.h=px_size*font_size;
 
-			if(font[c-'A'][i-x+(j-y)*FONT_WIDTH]){
+			if(font[c-32][i-x+(j-y)*FONT_WIDTH]){
 				SDL_RenderFillRect(rend, &rect);
 			}
 		}
