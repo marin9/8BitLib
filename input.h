@@ -1,13 +1,13 @@
 #pragma once
-#define KEY_UNKNOWN	-1
 #define NO_INPUT	0
-#define KEY_UP		1
-#define KEY_DOWN	2
-#define KEY_LEFT	3
-#define KEY_RIGHT	4
-#define KEY_SPACE	5
-#define KEY_ENTER	6
-#define KEY_ESC		7
-#define KEY_EXIT	8
+#define UP			1
+#define DOWN		2
+#define LEFT		3
+#define RIGHT		4
+#define SPACE		5
+#define ENTER		6
+#define ESC			7
+#define EXIT		8
+#define UNKN_INPUT	9
 
 int input_getkey();

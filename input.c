@@ -10,27 +10,27 @@ int input_getkey(){
 	}
 
 	if(event.type==SDL_QUIT){
-		return KEY_EXIT;
+		return EXIT;
 	}
 
 	if(event.type==SDL_KEYDOWN){
 		switch(event.key.keysym.sym){
 			case SDLK_UP:
-				return KEY_UP;
+				return UP;
 			case SDLK_DOWN:
-				return KEY_DOWN;
+				return DOWN;
 			case SDLK_LEFT:
-				return KEY_LEFT;
+				return LEFT;
 			case SDLK_RIGHT:
-				return KEY_RIGHT;
+				return RIGHT;
 			case SDLK_SPACE:
-				return KEY_SPACE;
+				return SPACE;
 			case SDLK_ESCAPE:
-				return KEY_ESC;
+				return ESC;
 			case SDLK_RETURN:
-				return KEY_ENTER;
+				return ENTER;
 			default:
-				return KEY_UNKNOWN;
+				return UNKN_INPUT;
 		}
 	}
 	return NO_INPUT;

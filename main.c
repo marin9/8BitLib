@@ -1,20 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <SDL2/SDL.h>
 #include "graphic.h"
 #include "input.h"
 
 
-void print_help(){
-	printf(" Usage: minigames -p [pixel_size]\n");
-	exit(0);
+
+int menu_step(){
+
+	return 0;
+}
+
+void menu_rend(){
+
 }
 
 
+
+int current=0;
+
+struct game{
+	char name[16];
+	int (*step)();
+	void (*rend)();
+} apps[] = {
+	{"Menu", menu_step, menu_rend}
+};
+
+
 int main(int argc, char **argv){
-	int pflag=2;
 	int c;
+	int pflag=2;
 
 	while((c=getopt(argc, argv, "hp:")) != -1){
 		switch(c){
@@ -22,7 +38,8 @@ int main(int argc, char **argv){
 				pflag=atoi(optarg);
 				break;
 			case 'h':
-				print_help();
+				printf(" Usage: minigames -p [pixel_size]\n");
+				exit(0);
 				break;
 			default:
 				printf("WARNING: Illegal arguments.\n");
@@ -34,22 +51,15 @@ int main(int argc, char **argv){
 	graphic_init(pflag);
 
 	while(1){
-		c=input_getkey();
-		printf("Key: %d\n", c);
-		if(c==KEY_EXIT){
-			break;
+		if(apps[current].step()){
+			current=0;
+			continue;
 		}
-
-		graphic_clear(4);
-		graphic_setcolor(3);
-		graphic_setfontsize(2);
-		graphic_drawtext(10, 10, "MARIN BRALIC");
+		apps[current].rend();
 		graphic_refresh();
-
-		SDL_Delay(20);
+		usleep(20000);
 	}
 
 	graphic_close();
 	return 0;
 }
-
