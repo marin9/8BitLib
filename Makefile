@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-Wall -Wextra
 LDFLAGS=-lSDL2
-TARGET=minigames
+TARGET=mg
 
 SRC=$(wildcard *.c)
 INC=$(wildcard *.h)
@@ -9,11 +9,13 @@ OBJ=$(SRC:.c=.o)
 
 
 $(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $@ $(LDFLAGS)
+	@echo " Compile" $@
+	@$(CC) $(OBJ) -o $@ $(LDFLAGS)
 
 %.o : %.c $(INC)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	@echo " Compile" $<
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(TARGET)
-	rm -f *.o
+	@echo " Clean"
+	@rm -f *.o $(TARGET)

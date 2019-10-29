@@ -1,12 +1,12 @@
 #include <SDL2/SDL.h>
-#include "input.h"
+#include "keyboard.h"
 
 
-int input_getkey(){
+int keyboard_getkey(){
 	SDL_Event event;
 
 	if(!SDL_PollEvent(&event)){
-		return NO_INPUT;
+		return NO_KEY;
 	}
 
 	if(event.type==SDL_QUIT){
@@ -30,8 +30,8 @@ int input_getkey(){
 			case SDLK_RETURN:
 				return ENTER;
 			default:
-				return UNKN_INPUT;
+				return UNKNKEY;
 		}
 	}
-	return NO_INPUT;
+	return NO_KEY;
 }

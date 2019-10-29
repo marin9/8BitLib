@@ -5,13 +5,11 @@
 #include "graphic.h"
 
 
-#define WINDOW_HEIGHT	128
-#define WINDOW_WIDTH	128
-
 static int px_size;
 static int font_size;
 static SDL_Window *window;
 static SDL_Renderer *rend;
+
 
 struct color{
 	int r;
@@ -36,7 +34,6 @@ struct color{
 	{0xFF, 0xFF, 0x55},
 	{0xFF, 0xFF, 0xFF},
 };
-
 
 
 void graphic_init(int psize){
