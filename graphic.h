@@ -21,7 +21,7 @@
 #define WINDOW_HEIGHT	128
 
 
-void graphic_init(int psize);
+void graphic_init(int s);
 void graphic_clear(int c);
 void graphic_setcolor(int c);
 void graphic_setfontsize(int s);
@@ -31,4 +31,4 @@ void graphic_drawsprite(int x, int y, int w, int h, char *s);
 void graphic_drawchar(int x, int y, char c);
 void graphic_drawtext(int x, int y, char *s);
 void graphic_refresh();
-void graphic_close();
+void graphic_clean();

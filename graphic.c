@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <SDL2/SDL.h>
-#include "font.h"
 #include "graphic.h"
+#include "font.h"
 
 
 static int px_size;
@@ -36,10 +35,8 @@ struct color{
 };
 
 
-void graphic_init(int psize){
-	SDL_Init(SDL_INIT_VIDEO);
-
-	px_size=psize;
+void graphic_init(int s){
+	px_size=s;
 	font_size=1;
 
 	window=SDL_CreateWindow(
@@ -49,10 +46,10 @@ void graphic_init(int psize){
     	WINDOW_WIDTH*px_size,
     	WINDOW_HEIGHT*px_size,
     	SDL_WINDOW_SHOWN
-	);
+    );
 	if(!window){   
 		printf("ERROR: graphic init: %s\n", SDL_GetError());
-	    SDL_Quit();
+		SDL_Quit();
 		exit(1);
 	}
 
@@ -60,8 +57,8 @@ void graphic_init(int psize){
 	if(!rend){
 		printf("ERROR: graphic init: %s\n", SDL_GetError());
     	SDL_DestroyWindow(window);
-		SDL_Quit();
-		exit(2);
+    	SDL_Quit();
+		exit(1);
 	}
 }
 
@@ -155,8 +152,7 @@ void graphic_refresh(){
 	SDL_RenderPresent(rend);
 }
 
-void graphic_close(){
+void graphic_clean(){
 	SDL_DestroyRenderer(rend);
 	SDL_DestroyWindow(window);
-	SDL_Quit();
 }
