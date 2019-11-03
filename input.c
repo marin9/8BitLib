@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <stdlib.h>
 #include "input.h"
 
 
@@ -6,11 +7,12 @@ int input_getkey(){
 	SDL_Event event;
 
 	if(!SDL_PollEvent(&event)){
-		return EVENT_NULL;
+		return NO_INPUT;
 	}
 
 	if(event.type==SDL_QUIT){
-		return EVENT_EXIT;
+		SDL_Quit();
+		exit(0);
 	}
 
 	if(event.type==SDL_KEYDOWN){
@@ -33,18 +35,19 @@ int input_getkey(){
 			break;
 		}
 	}
-	return EVENT_NULL;
+	return NO_INPUT;
 }
 
 int input_getmouse(int *x, int *y){
 	SDL_Event event;
 
 	if(!SDL_PollEvent(&event)){
-		return EVENT_NULL;
+		return NO_INPUT;
 	}
 
 	if(event.type==SDL_QUIT){
-		return EVENT_EXIT;
+		SDL_Quit();
+		exit(0);
 	}
 
 	SDL_GetMouseState(x, y);
@@ -59,5 +62,5 @@ int input_getmouse(int *x, int *y){
 			break;
 		}
 	}
-	return EVENT_NULL;
+	return NO_INPUT;
 }
