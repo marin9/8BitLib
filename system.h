@@ -3,5 +3,6 @@
 
 void system_init();
 void system_sleep(int ms);
-void system_exit(int ret);
+void system_exit();
+int system_getticks();
 int system_getrand();

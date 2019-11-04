@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL2/SDL.h>
-#include "graphic.h"
-#include "audio.h"
 
 
 void system_init(){
@@ -19,9 +17,13 @@ void system_sleep(int ms){
 	SDL_Delay(ms);
 }
 
-void system_exit(int ret){
+void system_exit(){
 	SDL_Quit();
-	exit(ret);
+	exit(0);
+}
+
+int system_getticks(){
+	return SDL_GetTicks();
 }
 
 int system_getrand(){

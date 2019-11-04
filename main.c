@@ -10,11 +10,11 @@
 
 void menu_rend(){
 	graphic_clear(0);
-	graphic_setcolor(GREEN);
+	graphic_setcolor(DARK_GREEN);
 	graphic_drawrect(0, 0, 42, 128);
 	graphic_setcolor(WHITE);
 	graphic_drawrect(42, 0, 44, 128);
-	graphic_setcolor(BROWN);
+	graphic_setcolor(ORANGE);
 	graphic_drawrect(86, 0, 42, 128);
 
 	graphic_setcolor(BLACK);
@@ -41,7 +41,7 @@ int main(int argc, char **argv){
 
 	graphic_clean();
 	audio_clean();
-	system_exit(0);
+	system_exit();
 
 	return 0;
 }
