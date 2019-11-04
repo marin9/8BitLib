@@ -1,7 +1,7 @@
 CC=gcc
-CFLAGS=-Wall -Wextra
-LDFLAGS=-lSDL2 -lm
-TARGET=mg
+CFLAGS= -Wall -Wextra -I../lib
+LDFLAGS= -L../lib -l8bit -lSDL2 -lm
+TARGET=a.out
 
 SRC=$(wildcard *.c)
 INC=$(wildcard *.h)
@@ -19,3 +19,4 @@ $(TARGET): $(OBJ)
 clean:
 	@echo " Clean"
 	@rm -f *.o $(TARGET)
+
