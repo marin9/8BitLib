@@ -1,7 +1,6 @@
 #include "8bit.h"
-#include <stdio.h>
 
-void menu_rend(){
+void render(){
 	int x, y;
 	graphic_clear(0);
 
@@ -22,19 +21,11 @@ int main(int argc, char **argv){
 	graphic_init(2);
 	audio_init();
 
-	int t1, t2, n=0;
 	while(1){
-		t1=system_getticks();
 		while(input_getkey());
-		menu_rend();
+		render();
 		graphic_refresh();
-		t2=system_getticks();
 		system_sleep(10);
-		++n;
-		if(n>10){
-			n=0;
-			printf("%d\n", t2-t1);
-		}
 	}
 
 	graphic_clean();
