@@ -1,19 +1,16 @@
 #include "8bit.h"
+#include <stdio.h>
 
 void menu_rend(){
-	int i;
+	int x, y;
 	graphic_clear(0);
 
-	for(i=0;i<16;++i){
-		graphic_setcolor(i);
-		graphic_drawrect(i*8, 0, 128, 128);
+	for(x=0;x<128;++x){
+		for(y=0;y<128;++y){
+			graphic_setcolor((system_getrand()*system_getrand())%16);
+			graphic_setpixel(x, y);			
+		}
 	}
-
-	graphic_setcolor(BLACK);
-	graphic_setfontsize(1);
-	graphic_drawtext(10, 10, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-	graphic_drawtext(10, 30, "abcdefghijklmnopqrstuvwxyz");
-	graphic_drawtext(10, 50, "       0123456789");
 }
 
 
@@ -25,11 +22,19 @@ int main(int argc, char **argv){
 	graphic_init(2);
 	audio_init();
 
+	int t1, t2, n=0;
 	while(1){
+		t1=system_getticks();
 		while(input_getkey());
 		menu_rend();
 		graphic_refresh();
-		system_sleep(20);
+		t2=system_getticks();
+		system_sleep(10);
+		++n;
+		if(n>10){
+			n=0;
+			printf("%d\n", t2-t1);
+		}
 	}
 
 	graphic_clean();

@@ -1,10 +1,13 @@
-#include <SDL2/SDL.h>
 #include <math.h>
+#include <SDL2/SDL.h>
+#include "audio.h"
+
 
 #define AMPLITUDE		255.0f
 #define SAMPLE_RATE		4000
 #define BUFF_SIZE		64
 
+static int status;
 static int frequency;
 static int progress;
 static float duration;
@@ -16,6 +19,9 @@ static void audio_callback(void *user_data, Uint8 *raw_buffer, int bytes){
     Uint8 *buff=(Uint8*)raw_buffer;
     user_data=user_data;
  
+    if(!status)
+        return;
+
     for(i=0;i<bytes;++i){	
     	t=1.0f*progress/SAMPLE_RATE;
     	++progress;
@@ -52,16 +58,28 @@ void audio_init(){
     	SDL_Quit();
     	exit(2);
     }
+
+    status=AUDIO_ON;
+}
+
+void audio_set(int s){
+    status=s;
 }
 
 void audio_play(int freq, int ms){
+    if(!status)
+        return;
+
 	frequency=freq;
 	duration=1.0f*ms/1000;
-	progress=0;
+	progress=0;  
     SDL_PauseAudio(0);
 }
 
 void audio_stop(){
+    if(status)
+        return;
+    
 	SDL_PauseAudio(1);
 }
 
