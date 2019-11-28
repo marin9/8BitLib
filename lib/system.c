@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL2/SDL.h>
+#include "graphic.h"
+#include "audio.h"
 
 
 void system_init(){
@@ -11,6 +13,8 @@ void system_init(){
 		exit(1);
 	}
 	srand(time(0));
+	graphic_init(2);
+	audio_init();
 }
 
 void system_sleep(int ms){
@@ -18,6 +22,8 @@ void system_sleep(int ms){
 }
 
 void system_exit(){
+	graphic_clean();
+	audio_clean();
 	SDL_Quit();
 	exit(0);
 }

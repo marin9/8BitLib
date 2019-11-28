@@ -1,10 +1,10 @@
 CC=gcc
 CFLAGS= -Wall -Wextra -I../lib
-LDFLAGS= -L../lib -l8bit -lSDL2 -lm
+LDFLAGS= -lSDL2 -lm
 TARGET=a.out
 
-SRC=$(wildcard *.c)
-INC=$(wildcard *.h)
+SRC=$(wildcard *.c) $(wildcard ../lib/*.c)
+INC=$(wildcard *.h) $(wildcard ../lib/*.h)
 OBJ=$(SRC:.c=.o)
 
 
@@ -18,5 +18,5 @@ $(TARGET): $(OBJ)
 
 clean:
 	@echo " Clean"
-	@rm -f *.o $(TARGET)
+	@rm -f $(TARGET) *.o ../lib/*.o
 

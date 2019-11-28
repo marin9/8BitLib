@@ -17,7 +17,7 @@
 #define CYAN			15
 
 
-#define WINDOW_WIDTH	128
+#define WINDOW_WIDTH	192
 #define WINDOW_HEIGHT	128
 
 
