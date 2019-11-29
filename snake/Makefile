@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS= -Wall -Wextra -I../lib
 LDFLAGS= -lSDL2 -lm
-TARGET=test
+TARGET=snake
 
 SRC=$(wildcard *.c) $(wildcard ../lib/*.c)
 INC=$(wildcard *.h) $(wildcard ../lib/*.h)

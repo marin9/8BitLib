@@ -1,30 +1,22 @@
+#include "audio.h"
+#include "input.h"
 #include "system.h"
 #include "graphic.h"
-#include "input.h"
-
-void render(){
-	int x, y;
-	graphic_clear(0);
-
-	for(x=0;x<WINDOW_WIDTH;++x){
-		for(y=0;y<WINDOW_HEIGHT;++y){
-			graphic_setcolor((system_getrand()*system_getrand())%16);
-			graphic_setpixel(x, y);			
-		}
-	}
-}
 
 
 int main(int argc, char **argv){
+	int color=0;
 	argc=argc;
 	argv=argv;
 
 	system_init();
 
-
 	while(1){
-		while(input_getkey());
-		render();
+		while(input_getkey()){
+			color=(color+1)%16;
+			audio_play(1000, 30);
+		}
+		graphic_clear(color);
 		graphic_refresh();
 		system_sleep(10);
 	}

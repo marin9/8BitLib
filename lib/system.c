@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include "graphic.h"
 #include "audio.h"
+#include "input.h"
 
 
 void system_init(){
@@ -19,6 +20,15 @@ void system_init(){
 
 void system_sleep(int ms){
 	SDL_Delay(ms);
+}
+
+void system_pause(int s){
+	s *= 10;
+	while(s--){
+		input_getkey();
+		graphic_refresh();
+		SDL_Delay(100);
+	}
 }
 
 void system_exit(){

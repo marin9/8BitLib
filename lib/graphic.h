@@ -1,20 +1,20 @@
 #pragma once
 #define BLACK			0
-#define DARK_GRAY		1
-#define LIGHT_GRAY		2
-#define WHITE			3
-#define BROWN			4
-#define DARK_RED		5
-#define RED				6
-#define PINK			7
-#define ORANGE			8
-#define BLUE			9
-#define LIGHT_BLUE		10
-#define PURPLE			11
-#define YELLOW			12
-#define DARK_GREEN		13
-#define GREEN			14
-#define CYAN			15
+#define BLUE			1
+#define GREEN			2
+#define CYAN			3
+#define RED				4
+#define MAGENTA			5
+#define BROWN			6
+#define GRAY 			7
+#define DARK_GRAY		8
+#define BRIGHT_BLUE		9
+#define BRIGHT_GREEN	10
+#define BRIGHT_CYAN		11
+#define BRIGHT_RED		12
+#define BRIGHT_MAGENTA	13
+#define YELLOW			14
+#define WHITE			15
 
 
 #define WINDOW_WIDTH	192
